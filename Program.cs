@@ -135,6 +135,44 @@
             //}
             #endregion
 
+            #region Person Age Comparing
+            PersonAge[] Persons = new PersonAge[3];
+            // Person 1
+            Console.WriteLine("Enter the name for the first person");
+            string PName1 = Console.ReadLine();
+            Console.WriteLine("Enter the age for the first person");
+            bool IsValid1 = int.TryParse(Console.ReadLine(),out int PAge1) ;
+            // Person 2
+            Console.WriteLine("Enter the name for the second person");
+            string PName2 = Console.ReadLine();
+            Console.WriteLine("Enter the age for the second person");
+            bool IsValid2 = int.TryParse(Console.ReadLine(), out int PAge2);
+            // Person 3
+            Console.WriteLine("Enter the name for the third person");
+            string PName3 = Console.ReadLine();
+            Console.WriteLine("Enter the age for the third person");
+            bool IsValid3 = int.TryParse(Console.ReadLine(), out int PAge3);
+
+            // Protective code
+            if(IsValid1 && IsValid2 && IsValid3 && PName1 is not null && PName2 is not null && PName3 is not null)
+            {
+                Persons[0]=  new PersonAge(PAge1, PName1);
+                Persons[1] = new PersonAge(PAge2, PName2);
+                Persons[2] = new PersonAge(PAge3, PName3);
+
+                int Oldest = PAge1;
+                int Youngest = PAge1;
+                for(int i = 0; i < Persons.Length; i++)
+                {
+                    Oldest = Persons[i].Age >= Oldest ? Persons[i].Age : Oldest;
+                    Youngest = Persons[i].Age <= Youngest ? Persons[i].Age : Youngest;
+                    
+                }
+                string Statement = $"The youngest dude is {Youngest} years old while the oldest is {Oldest}";
+                Console.Write(Statement);
+            }
+            #endregion
+
 
         }
     }
